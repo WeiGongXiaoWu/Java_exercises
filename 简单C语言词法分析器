@@ -249,6 +249,7 @@ class String1{
                     System.out.println("(;,null)");
                     break;
                 case '#':
+                    break;
                 default:
                     System.out.println("出现非法字符:"+character);
                     break;

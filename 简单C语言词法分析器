@@ -8,7 +8,7 @@ public class Test{
         String1 test = new String1(input.next());
         test.result();
         System.out.println("分析结束！");
-    }
+    }//测试的主函数
 }
 class String1{
     private String string1 =null;  //存放输入的字符串
@@ -17,28 +17,24 @@ class String1{
     private char character = ' ';  //字符变量，存放最新读入的源程序字符
     private final String[] reserved ={" ","while","if","else","switch","case"};  //保留字
     public String1(){
-    }
+    }  //无参构造函数
     public String1(String a){
         string1 = a;
         point = -1;  //方便之后对character的判断
-    }
+    }  //含参构造函数
     public void updateCharacter(){
-        //更新字符character的内容
         point++;
         character = string1.charAt(point);
-    }
+    }  //更新字符character的内容
     public void getbe(){
-        //滤除空格
         while(character == ' '){
             updateCharacter();
         } 
-    }
+    }  //滤除空格
     public void concatenation(){
-        //将字符串token与字符character拼接
         token = token + character;
-    }
+    }  //将字符串token与字符character拼接
     public boolean letter(){
-        //判断character中的字符是否为字母
         switch(character){
             case 'A':
             case 'B':
@@ -96,9 +92,8 @@ class String1{
             default:
                 return false;
         }
-    }
+    }  //判断character中的字符是否为字母
     public boolean digit(){
-        //判断character中的字符是否为数字
          switch(character){
              case '0':
              case '1':
@@ -114,28 +109,25 @@ class String1{
              default:
                  return false;
          }
-    }
+    }  //判断character中的字符是否为数字
     public int reserve(){
-        //判断字符串token是否是保留字
         for(int i = 1;i<reserved.length;i++){
             if(token.equals(reserved[i]))
                 return i;
         }
         return 0;
-    }
+    }  //判断字符串token是否是保留字
     public void retract(){
-        //point指针退后一位，character清空
         point = point - 1;
         character = ' ';
-    }
+    }  //point指针退后一位，character清空
     public boolean reminder(){
-        //检查输入字符串是否是以“#”号结尾
         if(string1.charAt(string1.length()-1) != '#'){
             System.out.println("请以“#”符号结尾！");
             return true;
         }
         else return false;
-    }
+    }  //检查输入字符串是否是以“#”号结尾
     public void result(){
         if(reminder()) return;
         character = string1.charAt(0);
@@ -257,10 +249,11 @@ class String1{
                 case ';':
                     System.out.println("(;,null)");
                     break;
+                case '#':
                 default:
-                    System.out.println("出现非法字符！"+character);
+                    System.out.println("出现非法字符:"+character);
                     break;
             }
         }while(character!='#');
-    }
+    }  //产生词法分析结果
 }

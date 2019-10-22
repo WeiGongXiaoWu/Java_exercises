@@ -1,0 +1,27 @@
+import java.lang.*;
+public class Test{
+    public static void main(String[] args){
+        Solution a = new Solution();
+        System.out.println(a.removeDuplicates("abbaca"));
+    }
+}
+class Solution {
+    public String removeDuplicates(String string) {
+        char[] newString = new char[string.length()];
+        int temp = -1;
+        for(int i = 0;i < string.length();i++){
+            if(temp == -1){
+                //当newString为空时
+                temp++;
+                newString[temp] = string.charAt(i);
+            }else if(string.charAt(i) != newString[temp]){
+                temp++;
+                newString[temp] = string.charAt(i);
+            }else{
+                    newString[temp] = ' ';
+                    temp--;
+            }
+        }
+        return String.valueOf(newString).trim();
+    }
+}
